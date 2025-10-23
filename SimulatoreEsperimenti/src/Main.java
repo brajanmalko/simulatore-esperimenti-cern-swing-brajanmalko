@@ -55,9 +55,9 @@ public class Main {
         }
 
         //iterator sull'array letto da file
-        Iterator<Esperimento> iterator = archivioEsperimenti.iterator();
+        Iterator<Esperimento> iterator2 = archivioEsperimenti.iterator();
         while(iterator.hasNext()){
-            Esperimento esperimento = iterator.next();
+            Esperimento esperimento = iterator2.next();
             esperimento.descrizione();
         }
     }
