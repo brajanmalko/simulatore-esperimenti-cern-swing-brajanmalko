@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Main {
@@ -20,6 +22,8 @@ public class Main {
         archivioEsperimenti.aggiungiScoperta(e5);
         archivioEsperimenti.aggiungiScoperta(e6);
 
+        ArrayList<Esperimento> lista = archivioEsperimenti.ricercaEsperimentoDaEnergia(500);
+
         try{
             archivioEsperimenti.salvaSuFile();
         }
@@ -36,6 +40,18 @@ public class Main {
         }
         catch(Exception e){
             throw new RuntimeException(e);
+        }
+
+        Iterator<Esperimento> iterator = archivioEsperimenti.iterator();
+        while(iterator.hasNext()){
+            Esperimento obj = iterator.next();
+            System.out.println(obj.descrizione());
+        }
+
+
+        ArrayList<Esperimento> lista2 = mappaScoperte.elencoEsperimenti();
+        for(Esperimento e : lista2){
+            System.out.println(e.descrizione());
         }
 
         //iterator sull'array letto da file

@@ -24,7 +24,9 @@ public class ArchivioEsperimenti implements Serializable {
         return lista.iterator();
     }
 
+
     public void caricaDaFile() throws IOException, ClassNotFoundException{
+        //try with resources che permette di chiudere in un modo automatico una risorsa
         try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivio.txt"))){
             this.lista = (ArrayList<Esperimento>) in.readObject();
         }
