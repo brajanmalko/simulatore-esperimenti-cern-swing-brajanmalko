@@ -22,4 +22,16 @@ public class EsperimentoRilevamento extends Esperimento{
 
         return descrizione.toString();
     }
+
+    public void setTipoParticella(String tipoParticella) throws DatiEsperimentoNonValidiException{
+        if(tipoParticella == null){
+            throw new DatiEsperimentoNonValidiException("Tipo errato");
+        }
+
+        this.tipoParticella = tipoParticella;
+    }
+
+    public String getTipoParticella(){
+        return this.tipoParticella;
+    }
 }

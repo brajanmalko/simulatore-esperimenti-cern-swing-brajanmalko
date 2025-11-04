@@ -22,4 +22,11 @@ public class EsperimentoCollisione extends Esperimento {
 
         return descrizione.toString();
     }
+
+    public void setNumeroCollisioni(int numeroCollisioni){
+        this.numeroCollisioni = numeroCollisioni;
+    }
+    public int getNumeroCollisioni(){
+        return this.numeroCollisioni;
+    }
 }

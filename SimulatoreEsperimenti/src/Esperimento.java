@@ -25,7 +25,15 @@ public abstract class Esperimento implements Serializable {
     public String getNome() {
         return nome;
     }
+
+    public void setNome(String nome) {
+         this.nome = nome;
+    }
     public double getEnergia() {
         return energia;
+    }
+
+    public void setEnergia(double energia) {
+        this.energia = energia;
     }
 }

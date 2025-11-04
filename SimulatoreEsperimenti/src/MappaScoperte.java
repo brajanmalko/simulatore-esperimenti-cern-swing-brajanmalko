@@ -32,7 +32,7 @@ public class MappaScoperte implements Serializable {
     }
 
     public void caricaDaFile() throws IOException, ClassNotFoundException{
-        try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivio.txt"))){
+        try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivio.cern"))){
             this.mappa = (HashMap<String, Esperimento>) in.readObject();
         }
         catch(IOException | ClassNotFoundException e){
@@ -41,7 +41,7 @@ public class MappaScoperte implements Serializable {
     }
 
     public void salvaSuFile() throws IOException{
-        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivio.txt"))){
+        try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivio.cern"))){
             out.writeObject(this.mappa);
         }
         catch(IOException e){

@@ -22,4 +22,14 @@ public class EsperimentoSimulazione extends Esperimento{
 
         return descrizione.toString();
     }
+
+    public void setAnno(int annoSimulazione){
+        if(annoSimulazione < 0 || annoSimulazione > 2025){
+            throw new DatiEsperimentoNonValidiException("Anno di simulazione non valido");
+        }
+        this.annoSimulazione = annoSimulazione;
+    }
+    public int getAnno(){
+        return this.annoSimulazione;
+    }
 }
