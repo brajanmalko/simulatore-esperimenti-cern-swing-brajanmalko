@@ -28,8 +28,20 @@ public class InterfacciaArchivioEsperimenti extends JFrame {
 
         // Pannello con le due liste
         JPanel pannelloListe = new JPanel(new GridLayout(1, 2, 10, 10));
-        pannelloListe.add(new JScrollPane(listaArchivio));
-        pannelloListe.add(new JScrollPane(listaPreferiti));
+
+        //pannello archivio
+        JPanel pannelloArchivio = new JPanel(new BorderLayout());
+        pannelloArchivio.setBorder(BorderFactory.createTitledBorder("Archivio esperimenti"));
+        pannelloArchivio.add(new JScrollPane(listaArchivio), BorderLayout.CENTER);
+
+        //pannello preferiti
+        JPanel pannelloPreferiti = new JPanel(new BorderLayout());
+        pannelloPreferiti.setBorder(BorderFactory.createTitledBorder("Preferiti"));
+        pannelloPreferiti.add(new JScrollPane(listaPreferiti), BorderLayout.CENTER);
+
+        pannelloListe.add(pannelloArchivio);
+        pannelloListe.add(pannelloPreferiti);
+
         add(pannelloListe, BorderLayout.CENTER);
 
         // Pannello con pulsanti
@@ -39,11 +51,14 @@ public class InterfacciaArchivioEsperimenti extends JFrame {
         JButton btnSalva = new JButton("Salva");
         JButton btnAggiungiPref = new JButton("Aggiungi preferiti");
         JButton btnRimuoviPref = new JButton("Rimuovi preferiti");
+        JButton btnMappa = new JButton("Apri mappa");
+
 
         pannelloBottoni.add(btnCarica);
         pannelloBottoni.add(btnSalva);
         pannelloBottoni.add(btnAggiungiPref);
         pannelloBottoni.add(btnRimuoviPref);
+        pannelloBottoni.add(btnMappa);
 
         add(pannelloBottoni, BorderLayout.SOUTH);
 
@@ -73,6 +88,7 @@ public class InterfacciaArchivioEsperimenti extends JFrame {
         btnRimuoviPref.addActionListener(e -> rimuoviDaiPreferiti());
         btnSalva.addActionListener(e -> salvaArchivio());
         btnCarica.addActionListener(e -> caricaArchivio());
+        btnMappa.addActionListener(e-> apriMappaCERN());
 
         // Dati di test
         archivio.aggiungiScoperta(new EsperimentoSimulazione("e1", 500, 2024));
@@ -138,6 +154,18 @@ public class InterfacciaArchivioEsperimenti extends JFrame {
             JOptionPane.showMessageDialog(this, "Archivio caricato correttamente!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Errore nel caricamento: " + e.getMessage());
+        }
+    }
+
+    private void apriMappaCERN() {
+        try {
+            FinestraMappa finestraMappa = new FinestraMappa();
+            finestraMappa.mostraMappa();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Errore nell'apertura della mappa: " + ex.getMessage(),
+                    "Errore Mappa CERN",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
